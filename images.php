@@ -17,22 +17,12 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-$uploadDir = 'uploads/';
+$sql = "SELECT * FROM images;";
 
-$uploadFile = $uploadDir . time() . '-' . basename($_FILES['file']['name']);
+$stmt = $conn->prepare($sql);
+$stmt->execute();
 
-if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
+$images = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-    // prepare sql and bind parameters
-    $stmt = $conn->prepare('INSERT INTO images (path) VALUES (:path)');
-    $stmt->bindParam(':path', $path);
-
-    // set parameters and execute
-    $path = $uploadFile;
-
-    $stmt->execute();
-
-    echo json_encode(['uploaded' => true]);
-} else {
-    echo json_encode(['uploaded' => false]);
-}
+include "templates/header.php";
+include "views/images/index.php";
