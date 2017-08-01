@@ -1,0 +1,13 @@
+{
+    "name": "josephmtinangi/cool-php-file-uploads",
+    "description": "Upload files like a pro",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joseph Mtinangi",
+            "email": "josephmtinangi@gmail.com"
+        }
+    ],
+    "require": {}
+}
