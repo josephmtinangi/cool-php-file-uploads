@@ -3,8 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cool File Uploads</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.css">
 </head>
 <body>
-	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<form id="fileUpload" action="/upload.php" method="POST" class="dropzone"></form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/dropzone.min.js"></script>
+	<script>
+		Dropzone.options.fileUpload = {
+			paramName: "file",
+			maxFilesize:2
+		};
+	</script>
 </body>
 </html>
